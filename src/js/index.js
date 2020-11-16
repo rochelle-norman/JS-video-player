@@ -11,9 +11,7 @@ let volume = 0.75;
 // TODO 1. rewind/forward +/- [1,2,3,4,5] seconds
 // TODO 2. volume control
 // TODO 3. keyboard events left/right/space
-
 // TODO 4. add 2nd video player
-
 
 //Show input bar onClick
 function showVolume() {
@@ -24,16 +22,22 @@ function showVolume() {
   }
 }
 
+//Added images so that buttons can toggle
 function toggleVideo() {
+  const play = document.getElementById("play");
+  const pause = document.getElementById("pause");
   if ($video.paused) {
     $video.play();
+    play.style.display = 'inline' 
+    pause.style.display = 'none';
     interval = interval ?? setInterval(updateProgressBar, 1000 / 30);
   } else {
     $video.pause();
+    pause.style.display = 'inline';
+    play.style.display = 'none' 
     clearInterval(interval);
     interval = null;
   }
-  renderButtons();
 }
 
 function updateProgressBar() {
@@ -41,18 +45,6 @@ function updateProgressBar() {
   const progress = (currentTime / duration) * 100;
   $progress.style.right = `${100 - progress}%`;
 }
-
-function playButton(){
-    if ($video.paused ) {
-      return('../images/play.png')
-    } 
-    else {
-      return('../images/pause.png')  
-    }  
-  
-}
-playButton()
-
 
 function seekWith(sec) {
   $video.currentTime += sec;
@@ -107,7 +99,6 @@ document.body.addEventListener('input', (e) => {
   }
 });
 
-
 document.body.addEventListener('click', (e) => {
   const { classList } = e.target;
   if (classList.contains('sound')) showVolume();
@@ -122,8 +113,3 @@ document.body.addEventListener('keydown', (e) => {
     case 'Space': toggleVideo(); break;
   }
 });
-
-renderButtons();
-
-
-

@@ -33,8 +33,14 @@ video {
 }
 
 .controls .rew-fwd-select {
+
   outline: none;
-  width: 3em;
+  width: 3.5em;
+  background: transparent;
+  color: white;
+  font-size: 20px;
+  border: 1px solid;
+  padding: 5px;
 }
 
 .controls .seekbar {
@@ -76,7 +82,7 @@ video {
 input[type='range'] {
   -webkit-appearance: none;
   background-color: rgb(236, 236, 236);
-  height: 15px;
+  height: 14px;
   overflow: hidden;
   width: 300px;
   border-radius: 5px;
@@ -125,3 +131,31 @@ input[type="range"]::-ms-fill-lower {
 #volume{
   display: none;
 }
+
+#pause{
+  display: none;
+  margin: 0 10px;
+}
+
+#play{
+  margin: 0 10px;
+}
+
+.rwd{
+    margin: 0 10px;
+}
+
+.fwd{
+  margin: 0 10px;
+}
+
+.rew-fwd-select{
+  margin: 0 10px;
+}
+
+
+/* 
+.button-wrapper{
+  display: flex;
+  justify-content: space-between;
+} */
