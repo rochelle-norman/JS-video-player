@@ -2,6 +2,7 @@ const $video = document.getElementById('video');
 const $seekbar = document.getElementById('seekbar');
 const $progress = document.getElementById('progress');
 const $buttons = document.getElementById('buttons');
+const $volumeBar = document.getElementById("volume")
 
 let interval;
 let jump = 5;
@@ -12,6 +13,16 @@ let volume = 0.75;
 // TODO 3. keyboard events left/right/space
 
 // TODO 4. add 2nd video player
+
+
+//Show input bar onClick
+function showVolume() {
+  if ($volumeBar.style.display === "none") {
+    $volumeBar.style.display = "inline";
+  } else {
+    $volumeBar.style.display = "none";
+  }
+}
 
 function toggleVideo() {
   if ($video.paused) {
@@ -31,21 +42,17 @@ function updateProgressBar() {
   $progress.style.right = `${100 - progress}%`;
 }
 
-function renderButtons() {
-  $buttons.innerHTML = `
-    <button class="video-toggle">${$video.paused ? 'play' : 'pause'}</button>
-    <select class="rew-fwd-select">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5" selected>5</option>
-    </select>
-    <button class="rwd">R</button>
-    <button class="fwd">F</button>
-    <input type="range" class="volume" min="0" max="100" step="1" value="${volume * 100}">
-  `;
+function playButton(){
+    if ($video.paused ) {
+      return('../images/play.png')
+    } 
+    else {
+      return('../images/pause.png')  
+    }  
+  
 }
+playButton()
+
 
 function seekWith(sec) {
   $video.currentTime += sec;
@@ -98,6 +105,12 @@ document.body.addEventListener('input', (e) => {
     volume = parseInt(e.target.value) / 100;
     $video.volume = volume;
   }
+});
+
+
+document.body.addEventListener('click', (e) => {
+  const { classList } = e.target;
+  if (classList.contains('sound')) showVolume();
 });
 
 document.body.addEventListener('keydown', (e) => {
