@@ -1,23 +1,47 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="css/main.css" rel="stylesheet">
-  </head>
-  <body>
 
-    <div class="container">
-      <video id="video" class="video-toggle">
-        <source type="video/mp4" src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4">
-      </video>
-      <section class="controls">
-        <article class="seekbar" id="seekbar">
-          <div class="progress" id="progress"></div>
-        </article>
-        <article id="buttons"></article>
-      </section>
+<head>
+  <link href="css/main.css" rel="stylesheet">
+</head>
 
+<body>
+
+  <div class="container">
+    <video id="video" class="video-toggle">
+      <source type="video/mp4" src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4">
+    </video>
+    <section class="controls">
+      <article class="seekbar" id="seekbar">
+        <div class="progress" id="progress"></div>
+      </article>
+      <article id="buttons">
+
+      </article>
+<div class ="button-container">
+      <img class='video-toggle' id='play' src="./images/play.png" alt="Play Button">
+      <img class='video-toggle' id='pause' src="./images/pause.png" alt="Pause Button">
+      <select class="rew-fwd-select">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5" selected>5</option>
+      </select>
+      <img class='rwd' src="./images/rewind.png" alt="Rewind Button">
+      <img class='fwd' src="./images/forward.png" alt="Fast Forward Button">
     </div>
+    <div class ="volume-container"></div>
+      <img class="sound" src="./images/speaker.png" alt="Volume Icon">
+      
+      <input type="range" id="volume" class="volume" min="0" max="100" step="1" value="${volume * 100}">
+  </div>
+    </section>
 
-    <script src="js/index.js"></script>
-  </body>
+  </div>
+
+  <script src="js/index.js"></script>
+
+</body>
+
 </html>
